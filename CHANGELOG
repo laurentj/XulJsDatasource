@@ -1,0 +1,10 @@
+
+
+Version 2.0 (04/01/2012)
+- support of recursion
+- support of the sortType attribute
+- support of idPrefix and idproperty
+
+
+Version 1.0 (2010)
+- initial release (used in ZoomCreator, a software by Zoomorama)
