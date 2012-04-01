@@ -25,6 +25,7 @@
  * This components implements a query processor for xul templates.
  * This query processor use javascript data as datasources.
  * @version 2.0
+ * @link https://github.com/laurentj/XulJsDatasource
  */
 
 
