@@ -1,5 +1,4 @@
 
-
 # jsDatasource 1.0
 
 jsDatasource is an XPCOM component for any XUL applications. It can be useful
@@ -49,9 +48,12 @@ You can then use this array as a datasource for your XUL Template:
 ## SECURITY WARNING
 
 -----------------------------------------------------------------------------------------
+
 **WARNING**: DON'T USE IT WITH UNTRUSTED DATA, COMING FROM A WEB SERVICE OR FROM THE USER.
 YOU COULD HAVE SECURITY ISSUES!!
+
 -----------------------------------------------------------------------------------------
+
 If you retrieve for example js objects from an unprivileged script, or if you "eval" some source code
 from a web service (you MUST NOT do this kind of code anyway), objects could implement getters that
 do unsafe things during the content generation...
@@ -64,7 +66,7 @@ object to parse data.
 This component is released under an opensource licence : Mozilla Public Licence.
 
 
-## features
+## Features
 
 This datasource provider supports:
 
@@ -73,7 +75,7 @@ This datasource provider supports:
 - recursion
 
 
-## installation
+## Installation
 
 The component should work at least for Firefox 3.6/Gecko 1.9.2 and higher. 
 
@@ -88,9 +90,10 @@ into your chrome.manifest file:
       component {EA696B77-AF80-4063-89AD-4985B14D0EBC} components/jsDatasource.js
       contract @mozilla.org/xul/xul-query-processor;1?name=javascript {EA696B77-AF80-4063-89AD-4985B14D0EBC}
 
-## basic use
+## Basic use
 
 On the root element of your template:
+
 - Indicate in the **datasources** attribute "javascript:" followed by the name
 of the javascript variable name, containing the data. You can indicate a
 property of an object: "javascript:myobject.jsdata"
@@ -116,7 +119,7 @@ Example:
         </template>
     </vbox>
 
-## id of generated elements
+## Id of generated elements
 
 Like other datasources providers (sqlite, xml, rdf), jsDatasource create an id
 attribute on generated elements. By default, the value of this attribute is an
@@ -161,7 +164,7 @@ The result will be:
     </vbox>
 
 
-# Sorting
+## Sorting
 
 The XUL template engine can sort results before using it to generate the content.
 
@@ -175,7 +178,7 @@ You can indicate also the type of data, with the **sortType** attribute, specifi
 to jsDatasource. Possible values are "int", "float" or "string" (default).
 
 
-## data from an nsISimpleEnumerator or nsIArray object
+## Data from an nsISimpleEnumerator or nsIArray object
 
 Instead of using a javascript array,you can use an nsISimpleEnumerator or nsIArray
 object.
@@ -199,7 +202,7 @@ It items have no interface, and are only javascript objects with a **wrappedJSOb
 property, indicate **wrappedJSObject**  in **iteminterface**.
 
 
-## filtering results
+## Filtering results
 
 You may provide a function which will filter results. Indicate its name into the
 **filterfunc** attribute on `<query>`. This function is the same kind of function as
@@ -210,7 +213,7 @@ callback for Array.filter(). It should accepts 4 arguments:
 3. the current index
 4. the Array object (null if the datasource is not an Array object) 
 
-## recursion
+## Recursion
 
 Your data may have some properties which contain themselves array of data, and you may want
 to iterate over them.
