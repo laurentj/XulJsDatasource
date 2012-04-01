@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    id="teststpl" hidechrome="false" title="Tests template"  windowtype="teststpl"
+    width="820" height="600">
+
+    <script type="application/javascript" src="teststpl.js" />
+
+    <listbox id="test1" datasources="javascript:datatest1"
+               querytype="javascript" ref="." idprefix="datatest1">
+       <template>
+          <query idproperty="id"/>
+          <action>
+              <listitem uri="?" label="?title" />
+          </action>
+       </template>
+    </listbox>    
+
+    <vbox id="test1" datasources="javascript:datatest2" style="margin:1em; border:3px solid red"
+               querytype="javascript" ref="." idprefix="datatest2"
+               sort="?title" sortDirection="ascending" >
+        <template>
+            <query idproperty="id" />
+            <action>
+                <hbox style="margin:1em; border:1px solid black" uri="?subcat">
+                    <label value="title:" /><label value="?title" />
+                </hbox>
+            </action>
+        </template>
+    </vbox>
+    <tree id="test2" datasources="javascript:datatest2"
+               querytype="javascript" ref="." idprefix="datatest3"
+               sort="?title" sortDirection="ascending" flex="1">
+        <treecols>
+            <treecol id="tree-name" label="Name" flex="1" primary="true"/>
+        </treecols>
+        <template>
+            <query idproperty="id" />
+            <action>
+                <treechildren>
+                    <treeitem uri="?subcat">
+                        <treerow>
+                            <treecell label="?title"/>
+                        </treerow>
+                    </treeitem>
+                </treechildren>
+            </action>
+        </template>
+    </tree>
+</window>
